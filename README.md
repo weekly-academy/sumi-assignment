@@ -1,4 +1,5 @@
 # sumi-assignment
+> 시작: 2023.08.27(일)
 
 ## Default Branch Rule
 
