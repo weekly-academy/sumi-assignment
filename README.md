@@ -15,8 +15,6 @@
 - 설계: ERD, 아키텍처, 요구사항 분석 등등
 - README.md에 작성한 후 PR올리기
 
----
-
 # Sumi's Section
 
 ....
