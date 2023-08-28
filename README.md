@@ -16,5 +16,9 @@
 - README.md에 작성한 후 PR올리기
 
 # Sumi's Section
+### 1. ERD
+  
+![ERD](https://github.com/weekly-academy/sumi-assignment/assets/81948599/877eba4f-c1ba-4bb6-8f3b-7e33d01cebc5)
 
+..  아직 완성x
 ....
