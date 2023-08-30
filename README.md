@@ -16,9 +16,8 @@
 - README.md에 작성한 후 PR올리기
 
 # Sumi's Section
-### 1. ERD
-  
-![ERD](https://github.com/weekly-academy/sumi-assignment/assets/81948599/877eba4f-c1ba-4bb6-8f3b-7e33d01cebc5)
+[1. 요구사항 분석 및 설계](https://imported-event-228.notion.site/91fc898a3c414ec7830f556fb9df76be?pvs=4)
+[2. ERD 및 아키텍처 설계](https://imported-event-228.notion.site/ERD-368e9d58d45f4aa29a550e15d9d40246?pvs=4)
+[3. API 명세서](https://imported-event-228.notion.site/API-05444878e28d48daa041747e92c6a8d0?pvs=4)
+[4. 질문 및 찾아봐야할 사항](https://imported-event-228.notion.site/88c702abd3d04efca6a470d33ce159aa?pvs=4)
 
-..  아직 완성x
-....
