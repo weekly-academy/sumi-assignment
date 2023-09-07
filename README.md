@@ -192,9 +192,9 @@
     // 성공 200
     
     {
-	isSucess: boolean;
-	message: string;
-        barcode: string;
+		isSucess: boolean;
+		message: string;
+		barcode: string;
     }
                       
     // 실패 400
@@ -229,9 +229,9 @@
     // 성공 200
     
     {
-	isSucess: boolean;
-	message: string;
-        data: PointResponse;
+		isSucess: boolean;
+		message: string;
+		data: PointResponse;
     }
                       
     // 실패 400
@@ -265,9 +265,9 @@
     // 성공 200
     
     {
-	isSucess: boolean;
-	message: string;
-        data: PointResponse;
+		isSucess: boolean;
+		message: string;
+		data: PointResponse;
     }
                       
     // 실패 400
@@ -302,12 +302,12 @@
     // 성공 200
     
     {
-	isSucess: boolean;
-	message: string;
-        history : 
-	      [
-             PointResponse
-	      ]
+		isSucess: boolean;
+		message: string;
+		history :
+			[
+				PointResponse
+			]
     }
                       
     // 실패 400
