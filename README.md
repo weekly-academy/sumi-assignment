@@ -123,6 +123,48 @@
 [백엔드 아키텍처](https://www.notion.so/3ee90d9a43ae4223acd9a8e4dcd4cb9a?pvs=21)
 
 ## 3. API 명세서
+> **Confirm**
+
+- isSuccess 필드가 있는 경우가 있고, 없는 경우가 있다!
+    
+    → 맞춰줄 필요가 있다! 
+    
+    `isSuccess 왜 필요한가?`
+    
+    - 성공했을 경우, HTTP Code만으로는 성공했을 때 어떤 정보들이 생성되었는지 등을 알 수 없음
+    - 실패했을 경우, HTTP Code외에 추가 오류 정보를 제공하면 클라이언트 단에서 오류를 더 적절하게 취할 수 있음
+    - 성공 시 응답, 실패 시 응답을 다르게 표현해보자
+
+### RFC 7807 Error Code
+
+- Error에 대한 표준 존재
+- `Error Code가 필요한 이유`
+    - 클라이언트 단에서는 **어떤 예외인지에 따라서 다르게 처리하는 로직 필요**
+        
+        → **다른 예외들이 동일한 StatusCode를 제공하는 경우**가 많으므로 클라이언트 단이 StatusCode와 더불어 **추가로 Error Message를 참조해서 처리**해야 하는 상황이 생긴 것! 
+        
+    - **예시**
+        
+        ```json
+        {
+            "type": "/errors/incorrect-user-pass",
+            "title": "Incorrect username or password.",
+            "status": 401,
+            "detail": "Authentication failed due to incorrect username or password.",
+            "instance": "/login/log/abc123"
+        }
+        ```
+        
+        - **type:** 오류를 분류하는 URI 식별자
+        - **title:** 오류에 대한 간략하고 사람이 읽을 수 있는 메시지
+        - **status:** HTTP 응답 코드 (Optional)
+        - **detail:** 사람이 읽을 수 있는 오류 설명
+        - **instance:** 오류의 특정 발생을 식별하는 URI
+          
+- 현업에서는 회사마다 다르게 사용 but, 학생일 때 해보는 것이 좋다.
+
+[Spring - REST API에서 직접 정의한 Error code를 사용하는 이유!](https://jaehoney.tistory.com/240)
+
 ## /user/barcode
   - `POST`
   - 유저 바코드 발급
