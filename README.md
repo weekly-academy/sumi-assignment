@@ -192,6 +192,8 @@
     // 성공 200
     
     {
+	isSucess: boolean;
+	message: string;
         barcode: string;
     }
                       
@@ -227,7 +229,8 @@
     // 성공 200
     
     {
-        isSucess: boolean;
+	isSucess: boolean;
+	message: string;
         data: PointResponse;
     }
                       
@@ -262,7 +265,8 @@
     // 성공 200
     
     {
-        isSucess: boolean;
+	isSucess: boolean;
+	message: string;
         data: PointResponse;
     }
                       
@@ -298,6 +302,8 @@
     // 성공 200
     
     {
+	isSucess: boolean;
+	message: string;
         history : 
 	      [
              PointResponse
