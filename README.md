@@ -152,7 +152,7 @@
 
 ### 최종 ERD 다이어그램 설계
 
-![final-Erd Diagram](https://github.com/weekly-academy/sumi-assignment/assets/81948599/a5a285bf-c337-473b-b4f1-812513686d43)
+![final-Erd Diagram](https://github.com/weekly-academy/sumi-assignment/assets/81948599/794e811e-3cef-472c-a0f3-2ba6f08b8755)
 
 <br>
 
