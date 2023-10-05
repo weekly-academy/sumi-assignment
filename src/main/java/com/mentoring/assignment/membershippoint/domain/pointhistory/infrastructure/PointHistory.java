@@ -4,6 +4,7 @@ import com.mentoring.assignment.membershippoint.domain.barcode.infrastructure.Ba
 import com.mentoring.assignment.membershippoint.domain.partnerstore.infrastructure.PartnerCategory;
 import com.mentoring.assignment.membershippoint.domain.partnerstore.infrastructure.PartnerStore;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -36,7 +37,7 @@ public class PointHistory {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
-    private PartnerCategory partnerStoreCategory;
+    private PartnerCategory partnerCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "partner_id", nullable = false)
@@ -46,4 +47,14 @@ public class PointHistory {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "barcode_id", nullable = false)
     private Barcode barcode;
+
+    @Builder
+    public PointHistory(OffsetDateTime approvedAt, Type type, Integer amount, PartnerCategory partnerCategory, PartnerStore partnerStore, Barcode barcode) {
+        this.approvedAt = approvedAt;
+        this.type = type;
+        this.amount = amount;
+        this.partnerCategory = partnerCategory;
+        this.partnerStore = partnerStore;
+        this.barcode = barcode;
+    }
 }

@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 public class PartnerServiceImpl implements PartnerService{
 
     private final PartnerStoreRepository partnerStoreRepository;
-    private final PartnerCategoryRepository partnerCategoryRepository;
 
     // 가맹점 검증
     @Override

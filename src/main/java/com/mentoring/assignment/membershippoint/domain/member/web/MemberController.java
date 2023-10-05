@@ -30,15 +30,14 @@ public class MemberController {
     }
 
     // 포인트 적립 API
-    // 왜 final을 쓰는 지 알아볼것
     @PostMapping("/point/saving")
-    public ResponseEntity<CommonResponse<PointResponse>> savePoint(@RequestBody @Valid final PointRequest pointRequest) throws Exception {
+    public ResponseEntity<CommonResponse<PointResponse>> savePoint(@RequestBody @Valid PointRequest pointRequest) throws Exception {
         return new ResponseEntity<>(memberService.savePoint(pointRequest), HttpStatus.OK);
     }
 
     // 포인트 사용 API
     @PostMapping("/point/using")
-    public ResponseEntity<CommonResponse<PointResponse>> usePoint(@RequestBody @Valid final PointRequest pointRequest) throws Exception {
+    public ResponseEntity<CommonResponse<PointResponse>> usePoint(@RequestBody @Valid PointRequest pointRequest) throws Exception {
         return new ResponseEntity<>(memberService.usePoint(pointRequest), HttpStatus.OK);
     }
 
