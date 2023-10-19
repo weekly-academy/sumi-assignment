@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Table(name = "member")
 public class Member {
     @Id
@@ -20,15 +20,8 @@ public class Member {
     @Column(columnDefinition = "BIGINT(11)")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "barcode_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "barcode_id")
     private Barcode barcode;
-
-//    @Builder
-//    public Member(Barcode barcode) {
-//
-//        Assert.notNull(barcode, "currentPoint must not be null");
-//
-//        this.barcode = barcode;
-//    }
 }
+

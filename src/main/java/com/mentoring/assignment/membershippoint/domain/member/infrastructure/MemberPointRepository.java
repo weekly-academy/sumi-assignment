@@ -8,7 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface MemberPointRepository extends JpaRepository<MemberPoint, Long> {
-    Optional<MemberPoint> findByMember(Member member);
 
     Optional<MemberPoint> findByMemberAndPartnerCategory(Member member, PartnerCategory partnerCategory);
 

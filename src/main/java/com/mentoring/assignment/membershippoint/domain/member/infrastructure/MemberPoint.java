@@ -2,6 +2,8 @@ package com.mentoring.assignment.membershippoint.domain.member.infrastructure;
 
 import com.mentoring.assignment.membershippoint.domain.partnerstore.infrastructure.PartnerCategory;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
@@ -19,6 +21,7 @@ public class MemberPoint {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 

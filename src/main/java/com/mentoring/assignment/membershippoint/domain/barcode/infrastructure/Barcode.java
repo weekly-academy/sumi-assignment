@@ -3,8 +3,11 @@ package com.mentoring.assignment.membershippoint.domain.barcode.infrastructure;
 
 import com.mentoring.assignment.membershippoint.domain.member.infrastructure.Member;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -22,12 +25,15 @@ public class Barcode {
     @Column(name = "barcode_number", columnDefinition = "CHAR(10)")
     private String barcodeNumber;
 
-    @OneToOne(mappedBy = "barcode")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
     private Member member;
 
 
-    public void updateBarcode(String barcodeNumber) {
+    @Builder
+    public Barcode(String barcodeNumber, Member member) {
         this.barcodeNumber = barcodeNumber;
+        this.member = member;
     }
 
 }

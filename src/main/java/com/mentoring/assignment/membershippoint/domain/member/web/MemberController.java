@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,19 +27,23 @@ public class MemberController {
     // 멤버쉽 바코드 발급 API
     @PostMapping("/barcode")
     public ResponseEntity<CommonResponse<String>> createBarcode(@RequestBody Long userId) throws Exception {
-        return new ResponseEntity<>(memberService.issueBarcode(userId), HttpStatus.OK);
+        String[] arr = memberService.issueBarcode(userId);
+        CommonResponse<String> commonResponse = new CommonResponse<>(true, arr[0], arr[1]);
+        return new ResponseEntity<>(commonResponse, HttpStatus.OK);
     }
 
     // 포인트 적립 API
     @PostMapping("/point/saving")
     public ResponseEntity<CommonResponse<PointResponse>> savePoint(@RequestBody @Valid PointRequest pointRequest) throws Exception {
-        return new ResponseEntity<>(memberService.savePoint(pointRequest), HttpStatus.OK);
+        CommonResponse<PointResponse> commonResponse = new CommonResponse<>(true, "포인트가 성공적으로 적립되었습니다.",memberService.savePoint(pointRequest));
+        return new ResponseEntity<>(commonResponse, HttpStatus.OK);
     }
 
     // 포인트 사용 API
     @PostMapping("/point/using")
     public ResponseEntity<CommonResponse<PointResponse>> usePoint(@RequestBody @Valid PointRequest pointRequest) throws Exception {
-        return new ResponseEntity<>(memberService.usePoint(pointRequest), HttpStatus.OK);
+        CommonResponse<PointResponse> commonResponse = new CommonResponse<>(true, "포인트가 성공적으로 사용되었습니다.",memberService.usePoint(pointRequest));
+        return new ResponseEntity<>(commonResponse, HttpStatus.OK);
     }
 
 }

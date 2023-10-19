@@ -2,6 +2,7 @@ package com.mentoring.assignment.membershippoint.domain.member.application;
 
 import com.mentoring.assignment.membershippoint.domain.barcode.application.BarcodeService;
 import com.mentoring.assignment.membershippoint.domain.barcode.infrastructure.Barcode;
+import com.mentoring.assignment.membershippoint.domain.barcode.infrastructure.BarcodeRepository;
 import com.mentoring.assignment.membershippoint.domain.member.infrastructure.Member;
 import com.mentoring.assignment.membershippoint.domain.member.infrastructure.MemberPoint;
 import com.mentoring.assignment.membershippoint.domain.member.infrastructure.MemberPointRepository;
@@ -10,21 +11,21 @@ import com.mentoring.assignment.membershippoint.domain.member.web.dto.PointReque
 import com.mentoring.assignment.membershippoint.domain.member.web.dto.PointResponse;
 import com.mentoring.assignment.membershippoint.domain.partnerstore.application.PartnerService;
 import com.mentoring.assignment.membershippoint.domain.partnerstore.infrastructure.PartnerCategory;
-import com.mentoring.assignment.membershippoint.domain.partnerstore.infrastructure.PartnerCategoryRepository;
 import com.mentoring.assignment.membershippoint.domain.partnerstore.infrastructure.PartnerStore;
 import com.mentoring.assignment.membershippoint.domain.pointhistory.application.PointHistoryService;
 import com.mentoring.assignment.membershippoint.domain.pointhistory.infrastructure.PointHistory;
 import com.mentoring.assignment.membershippoint.domain.pointhistory.infrastructure.Type;
-import com.mentoring.assignment.membershippoint.global.dto.CommonResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.time.OffsetDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 // RequiredArgsConstructor: final이나 @Nonnull인 필드 값만 파라미터로 받는 생성자를 생성
@@ -40,9 +41,22 @@ public class MemberServiceImpl implements MemberService{
     private final PointHistoryService pointHistoryService;
 
 
+    @PostConstruct
+    public void setup() {
+        Member member1 = new Member();
+        Member member2 = new Member();
+
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+
+    }
+
+
     // 멤버쉽 바코드 발급
     @Override
-    public CommonResponse<String> issueBarcode(Long memberId) throws Exception {
+    public String[] issueBarcode(Long memberId) throws Exception {
+
+        String[] arr = new String[2]; // 2개를 담을 수 있음
 
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new Exception("회원을 찾을 수 없습니다."));
@@ -50,15 +64,22 @@ public class MemberServiceImpl implements MemberService{
 
         // 멤버가 바코드를 이미 가지고 있는지 검증
         if (member.getBarcode() != null) {
-
-            return new CommonResponse<>(true, "멤버가 바코드를 이미 가지고 있습니다.", member.getBarcode().getBarcodeNumber());
+            arr[0] = member.getBarcode().getBarcodeNumber();
+            arr[1] = "멤버가 바코드를 이미 가지고 있습니다.";
+            return arr;
         } else {
             String newBarcodeNumber = barcodeService.createBarcode();
-            log.info(newBarcodeNumber);
-            member.getBarcode().updateBarcode(newBarcodeNumber);
-            memberRepository.save(member);
+            Barcode barcode = Barcode.builder()
+                    .barcodeNumber(newBarcodeNumber)
+                    .member(member)
+                    .build();
 
-            return new CommonResponse<>(true, "멤버가 새롭게 바코드를 발급받았습니다.", newBarcodeNumber);
+            barcodeService.save(barcode);
+
+            arr[0] = newBarcodeNumber;
+            arr[1] = "바코드를 생성했습니다.";
+
+            return arr;
 
 
         }
@@ -66,7 +87,7 @@ public class MemberServiceImpl implements MemberService{
 
     // 멤버쉽 포인트 적립
     @Override
-    public CommonResponse<PointResponse> savePoint(PointRequest pointRequest) throws Exception {
+    public PointResponse savePoint(PointRequest pointRequest) throws Exception {
 
         // 바코드 검증
         Barcode barcode = barcodeService.validateBarcode(pointRequest.getBarcodeNumber());
@@ -86,16 +107,16 @@ public class MemberServiceImpl implements MemberService{
 
         // 포인트 히스토리에 저장
         OffsetDateTime offsetDateTime = OffsetDateTime.now();
-        PointHistory pointHistory = pointHistoryService.savePointHistory(offsetDateTime, Type.USE, memberPoint.getCurrentPoint(), partnerCategory, partnerstore, barcode);
+        PointHistory pointHistory = pointHistoryService.savePointHistory(offsetDateTime, Type.EARN, memberPoint.getCurrentPoint(), partnerCategory, partnerstore, barcode);
 
 
-        return new CommonResponse<>(true, "포인트가 적립되었습니다.", new PointResponse(pointHistory));
+        return new PointResponse(pointHistory);
 
     }
 
     // 멤버쉽 포인트 사용
     @Override
-    public CommonResponse<PointResponse> usePoint(PointRequest pointRequest) throws Exception {
+    public PointResponse usePoint(PointRequest pointRequest) throws Exception {
         // 바코드 검증
         Barcode barcode = barcodeService.validateBarcode(pointRequest.getBarcodeNumber());
         Member member = barcode.getMember();
@@ -126,15 +147,9 @@ public class MemberServiceImpl implements MemberService{
         PointHistory pointHistory = pointHistoryService.savePointHistory(offsetDateTime, Type.USE, amount, partnerCategory, partnerstore, barcode);
 
 
-        return new CommonResponse<>(true, "포인트가 사용되었습니다.", new PointResponse(pointHistory));
+        return new PointResponse(pointHistory);
 
     }
-
-
-
-
-
-
 
 
 
