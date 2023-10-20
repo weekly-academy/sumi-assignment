@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.Map;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +29,7 @@ public class MemberController {
     public ResponseEntity<CommonResponse<String>> createBarcode(@RequestBody Long userId) throws Exception {
         String[] arr = memberService.issueBarcode(userId);
         CommonResponse<String> commonResponse = new CommonResponse<>(true, arr[0], arr[1]);
-        return new ResponseEntity<>(commonResponse, HttpStatus.OK);
+        return new ResponseEntity<>(commonResponse, HttpStatus.CREATED);
     }
 
     // 포인트 적립 API

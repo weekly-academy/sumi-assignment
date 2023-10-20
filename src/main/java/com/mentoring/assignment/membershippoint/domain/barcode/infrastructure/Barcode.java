@@ -36,4 +36,8 @@ public class Barcode {
         this.member = member;
     }
 
+    public void assignMember(Member member) {
+        this.member = member;
+    }
+
 }

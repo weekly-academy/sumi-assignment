@@ -2,7 +2,6 @@ package com.mentoring.assignment.membershippoint.domain.member.application;
 
 import com.mentoring.assignment.membershippoint.domain.barcode.application.BarcodeService;
 import com.mentoring.assignment.membershippoint.domain.barcode.infrastructure.Barcode;
-import com.mentoring.assignment.membershippoint.domain.barcode.infrastructure.BarcodeRepository;
 import com.mentoring.assignment.membershippoint.domain.member.infrastructure.Member;
 import com.mentoring.assignment.membershippoint.domain.member.infrastructure.MemberPoint;
 import com.mentoring.assignment.membershippoint.domain.member.infrastructure.MemberPointRepository;
@@ -16,14 +15,11 @@ import com.mentoring.assignment.membershippoint.domain.pointhistory.application.
 import com.mentoring.assignment.membershippoint.domain.pointhistory.infrastructure.PointHistory;
 import com.mentoring.assignment.membershippoint.domain.pointhistory.infrastructure.Type;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.time.OffsetDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.stream.Stream;
 
 @Service
@@ -43,8 +39,11 @@ public class MemberServiceImpl implements MemberService{
 
     @PostConstruct
     public void setup() {
-        Member member1 = new Member();
-        Member member2 = new Member();
+        Member member1 = Member.builder()
+                .build();
+
+        Member member2 = Member.builder()
+                .build();
 
         memberRepository.save(member1);
         memberRepository.save(member2);

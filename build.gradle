@@ -32,6 +32,8 @@ dependencies {
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
 	implementation('org.slf4j:jcl-over-slf4j')
 	implementation('ch.qos.logback:logback-classic')
+	implementation 'com.google.code.gson:gson:2.9.0'
+	testImplementation 'org.mockito:mockito-all:2.0.0'
 }
 
 tasks.named('test') {
