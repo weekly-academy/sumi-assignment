@@ -1,26 +1,32 @@
 package com.mentoring.assignment.membership.domain.partnerstore.infrastructure;
 
+
+import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "PartnerStoreCategory")
+@Table(name = "partner_category")
+public class PartnerCategory {
 
-public class PartnerStoreCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "BIGINT(11)")
     private Long id;
 
 
-    @Column(columnDefinition = "CHAR(1)", nullable = false)
-    private char field;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Field field;
 
-
-
+    @Builder
+    public PartnerCategory(Field field){
+        this.field = field;
+    }
 }

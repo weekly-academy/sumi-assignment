@@ -1,7 +1,11 @@
 package com.mentoring.assignment.membership.domain.partnerstore.application;
 
+import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerStore;
+
 public interface PartnerService {
-    Boolean validatePartner(Long partnerId);
+    PartnerStore validatePartner(Long partnerId) throws Exception;
+
+
 
 
 
