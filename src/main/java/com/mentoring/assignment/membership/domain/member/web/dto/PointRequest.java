@@ -1,6 +1,5 @@
 package com.mentoring.assignment.membership.domain.member.web.dto;
 
-
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;

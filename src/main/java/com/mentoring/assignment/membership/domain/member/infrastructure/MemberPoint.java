@@ -1,11 +1,13 @@
 package com.mentoring.assignment.membership.domain.member.infrastructure;
 
+
 import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerCategory;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.util.Assert;
+
 
 @Entity
 @Getter

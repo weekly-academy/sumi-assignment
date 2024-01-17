@@ -1,5 +1,6 @@
 package com.mentoring.assignment.membership.domain.barcode.infrastructure;
 
+
 import com.mentoring.assignment.membership.domain.member.infrastructure.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -18,10 +19,12 @@ public class Barcode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "BIGINT(11)")
+
     private Long id;
 
     @Column(name = "barcode_number", columnDefinition = "CHAR(10)")
     private String barcodeNumber;
+
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

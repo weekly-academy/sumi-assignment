@@ -1,6 +1,7 @@
 package com.mentoring.assignment.membership.domain.member.application;
 
 
+
 import com.mentoring.assignment.membership.domain.barcode.application.BarcodeService;
 import com.mentoring.assignment.membership.domain.barcode.infrastructure.Barcode;
 import com.mentoring.assignment.membership.domain.member.infrastructure.Member;
@@ -24,7 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 
 import java.util.stream.Stream;
-
 
 @Service
 @RequiredArgsConstructor
@@ -68,6 +68,7 @@ public class MemberServiceImpl implements MemberService {
 
         // 멤버가 바코드를 이미 가지고 있는지 검증
         if (member.getBarcode() != null) {
+
             arr[0] = "멤버가 바코드를 이미 가지고 있습니다.";
             arr[1] = member.getBarcode().getBarcodeNumber();
             return arr;

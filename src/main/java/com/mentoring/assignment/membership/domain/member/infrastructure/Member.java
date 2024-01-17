@@ -1,14 +1,13 @@
 package com.mentoring.assignment.membership.domain.member.infrastructure;
 
 import com.mentoring.assignment.membership.domain.barcode.infrastructure.Barcode;
-
 import jakarta.persistence.*;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
-
 
 
 @Entity

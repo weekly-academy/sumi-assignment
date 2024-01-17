@@ -1,7 +1,6 @@
 package com.mentoring.assignment.membership.domain.pointhistory.application;
 
 
-
 import com.mentoring.assignment.membership.domain.barcode.application.BarcodeService;
 import com.mentoring.assignment.membership.domain.barcode.infrastructure.Barcode;
 import com.mentoring.assignment.membership.domain.member.web.dto.PointResponse;
@@ -65,4 +64,5 @@ public class PointHistoryService{
 
 
     }
+
 }

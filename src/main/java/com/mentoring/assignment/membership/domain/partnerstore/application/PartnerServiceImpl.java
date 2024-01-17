@@ -2,11 +2,11 @@ package com.mentoring.assignment.membership.domain.partnerstore.application;
 
 
 import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.*;
-
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
 
 
 @Slf4j
@@ -69,6 +69,5 @@ public class PartnerServiceImpl implements PartnerService{
 
         return partnerStore;
     }
-
 
 }

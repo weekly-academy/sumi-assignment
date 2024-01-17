@@ -19,6 +19,7 @@ public class PartnerStore {
     @Column(columnDefinition = "BIGINT(11)")
     private Long id;
 
+
     @Column(name = "partner_name", columnDefinition = "VARCHAR(20)", nullable = false)
     private String partnerName;
 

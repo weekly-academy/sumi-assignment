@@ -1,9 +1,8 @@
 package com.mentoring.assignment.membership.domain.member.web.dto;
 
-
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.Field;
+
 import com.mentoring.assignment.membership.domain.pointhistory.infrastructure.PointHistory;
 import com.mentoring.assignment.membership.domain.pointhistory.infrastructure.Type;
 import lombok.AccessLevel;
@@ -12,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PointResponse {
@@ -30,6 +30,5 @@ public class PointResponse {
         this.partnerName = pointHistory.getPartnerStore().getPartnerName();
         this.amount = pointHistory.getAmount();
     }
-
 
 }
