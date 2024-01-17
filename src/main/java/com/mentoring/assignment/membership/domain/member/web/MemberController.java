@@ -12,10 +12,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -36,6 +33,7 @@ public class MemberController {
         CommonResponse<String> commonResponse = new CommonResponse<>(true, arr[0], arr[1]);
         return new ResponseEntity<>(commonResponse, HttpStatus.CREATED);
     }
+
 
     // 포인트 적립 API
     @Operation(summary = "멤버쉽 포인트 적립 API", description = "가맹점의 업종별로 통합하여 포인트 적립")

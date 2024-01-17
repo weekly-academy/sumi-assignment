@@ -19,7 +19,14 @@ public class BarcodeService {
 
     // 바코드 생성 로직
     public String createBarcode() {
-        String newBarcodeNumber = RandomStringUtils.randomNumeric(10);
+        // 앞 자릿수가 0이면 request 보낼 때 에러가 남
+       String newBarcodeNumber = RandomStringUtils.randomNumeric(10);
+
+        // 앞 자릿수가 0이 올 경우 존재
+        while (Long.valueOf(newBarcodeNumber).toString().length() < 10) {
+            newBarcodeNumber = RandomStringUtils.randomNumeric(10);
+        }
+
         log.info(newBarcodeNumber);
         return newBarcodeNumber;
     }

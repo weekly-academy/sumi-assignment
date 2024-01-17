@@ -12,7 +12,7 @@ import org.springframework.util.Assert;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-@Table(name = "MemberPoint")
+@Table(name = "member_point")
 public class MemberPoint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
