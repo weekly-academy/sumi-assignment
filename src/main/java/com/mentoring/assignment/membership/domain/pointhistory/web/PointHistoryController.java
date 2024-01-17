@@ -5,7 +5,7 @@ import com.mentoring.assignment.membership.domain.member.web.dto.PointResponse;
 import com.mentoring.assignment.membership.domain.pointhistory.application.PointHistoryService;
 
 import com.mentoring.assignment.membership.global.dto.CommonResponse;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,7 +26,7 @@ public class PointHistoryController {
 
     private final PointHistoryService pointHistoryService;
 
-    @ApiOperation(value = "포인트 내역 조회 API", notes = "포인트 적립/사용 내역을 조회")
+    @Operation(summary = "포인트 내역 조회 API", description = "포인트 적립/사용 내역을 조회" )
     @GetMapping("/history")
     public ResponseEntity<CommonResponse<List<PointResponse>>> getPointHistory(PointHistoryRequest pointHistoryRequest) throws Exception {
 //        log.info(pointHistoryRequest.getBarcodeNumber());

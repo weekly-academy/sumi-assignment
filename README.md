@@ -1,5 +1,3 @@
-# sumi-assignment
-> 시작: 2023.08.27(일)
 
 ## Default Branch Rule
 
@@ -9,13 +7,7 @@
 - 각 작업은 새롭게 생성한 브랜치에서 수행하고, develop 브랜치로 PR 올려주시면 됨.
 - 참고하면 좋은 책: https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=316493887
 
-## Step 1.
 
-> 2023.08.30(수) 저녁 리뷰
-- 설계: ERD, 아키텍처, 요구사항 분석 등등
-- README.md에 작성한 후 PR올리기
-
-# Sumi's Section
 ## 1. 요구사항 분석 및 설계
 
 - 유저와 바코드 [1:1]
@@ -411,12 +403,43 @@
       }
       ```
 
-## 4. 질문 및 찾아봐야할 사항 
+## #4. Development Design Comment 
 
-- 식별관계, 비식별관계의 차이 
-    
-    → 의미적으로 차이는 알겠는데 비식별관계랑 비교했을 때 식별관계는 어떤 경우에 쓰는 것이 더 좋은지? 
-    
-- string vs String , long vs Long … 차이 
 
-- API 명세서, ERD 컨펌받기
+
+## #5. Code Comment 
+멘토님이 코멘트를 남겨주신 내용을 바탕으로 
+
+| 코멘트 내용                                                                                         | 답변 내용                                              |
+|------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| 0x00. Member와 MemberPoint가 Cascade로 처리되어야 한다고 생각하는 이유                                          | [0x00 : Comment Need](#0x00--comment-need)         |
+| 0x01. Assert가 어느 시점에 사용되는지, 사용한 이유                                                             | [0x01 : Comment Need](#0x01--comment-need)         |
+| 0x02. 테이블명/컬럼명 컨벤션                                                                             | [0x02 : Comment Resolved](#0x02--comment-resolved) |
+| 0x03. 서비스에서 사용자에게 응답될 Http Response 객체를 직접 만드는게 맞을까?                                           | [0x03 : Comment Resolved](#0x03--comment-resolved) |
+| 0x04. Entity 클래스에서 builder를 사용한 이유                                                             | [0x04 : Comment Need](#0x04--comment-need)         |
+| 0x05. Service와 ServiceImpl가 같은 패키지에 있으면?                                                       | [0x05 : Comment Need](#0x05--comment-need)         |
+| 0x06. PartnerStoreCategory에서 컬럼 field 타입을 char보다 enum을 쓰자                                      | [0x06 : Comment Resolved](#0x06--comment-resolved) |
+| 0x07. @RequiredArgsConstructor, @NoArgsConstructor등 습관적으로 어노테이션을 쓰지말고, 왜 필요한지 생각해보자            | [0x07 : Comment Resolved](#0x07--comment-resolved) | 
+| 0x08. LocalDateTime말고 Instant, OffsetDateTime, ZonedDateTime을 사용해보자                            | [0x08 : Comment Need](#0x08--comment-need)         |                                                                               
+| 0x09. 메소드 명이나 변수명에 ~List같이 자료형을 포함시키지 말자                                                       | [0x09 : Comment Resolved](#0x09--comment-resolved) |
+| 0x10. 작성한 코드에서 PartnerStore와 PointHistory의 관계를 봤을 때, 상호명이 변경될 경우 PointHistory도 영향을 받을 수 있지않을까? | [0x10 : Comment Need](#0x10--comment-need)         |                                                                       
+| 0x11. 메소드 파라미터와 반환 값으로 Primitive Type이 아니라 Wrapper Type을 사용한 이유                                | [0x11 : Comment Resolved](#0x11--comment-resolved) |                                                                            
+| 0x12. build.gradle.kts로 변경해보자                                                                  | [0x12 : Comment Need](#0x12--comment-need)         |
+| 0x13. build.gradle의 버전을 외부에 지정하는 방법을 적용해보자                                                     | [0x13 : Comment Need](#0x13--comment-need)         |
+
+
+### 0x00 : Comment Need
+### 0x01 : Comment Need
+### 0x02 : Comment Resolved
+### 0x03 : Comment Resolved
+### 0x04 : Comment Need
+### 0x05 : Comment Need
+### 0x06 : Comment Resolved
+### 0x07 : Comment Resolved
+### 0x08 : Comment Need
+### 0x09 : Comment Resolved
+### 0x10 : Comment Need
+### 0x11 : Comment Resolved
+### 0x12 : Comment Need
+### 0x13 : Comment Need
+

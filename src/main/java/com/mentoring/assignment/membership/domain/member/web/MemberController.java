@@ -6,7 +6,8 @@ import com.mentoring.assignment.membership.domain.member.web.dto.PointRequest;
 import com.mentoring.assignment.membership.domain.member.web.dto.PointResponse;
 
 import com.mentoring.assignment.membership.global.dto.CommonResponse;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class MemberController {
     private final MemberService memberService;
 
     // 멤버쉽 바코드 발급 API
-    @ApiOperation(value = "멤버쉽 바코드 발급 API", notes = "사용자 별로 하나의 멤버십 바코드를 발급 / 중복 불가능")
+    @Operation(summary = "멤버쉽 바코드 발급 API", description = "사용자 별로 하나의 멤버십 바코드를 발급 / 중복 불가능")
     @PostMapping("/barcode")
     public ResponseEntity<CommonResponse<String>> createBarcode(@RequestBody MemberDto memberDto) throws Exception {
         String[] arr = memberService.issueBarcode(memberDto.getUserId());
@@ -37,7 +38,7 @@ public class MemberController {
     }
 
     // 포인트 적립 API
-    @ApiOperation(value = "멤버쉽 포인트 적립 API", notes = "가맹점의 업종별로 통합하여 포인트 적립")
+    @Operation(summary = "멤버쉽 포인트 적립 API", description = "가맹점의 업종별로 통합하여 포인트 적립")
     @PostMapping("/point/saving")
     public ResponseEntity<CommonResponse<PointResponse>> savePoint(@RequestBody @Valid PointRequest pointRequest) throws Exception {
         CommonResponse<PointResponse> commonResponse = new CommonResponse<>(true, "포인트가 성공적으로 적립되었습니다.",memberService.savePoint(pointRequest));
@@ -45,7 +46,7 @@ public class MemberController {
     }
 
     // 포인트 사용 API
-    @ApiOperation(value = "멤버쉽 포인트 사용 API", notes = "요청한 가맹점의 업종별 통합 적립금에서 사용")
+    @Operation(summary = "멤버쉽 포인트 사용 API", description = "요청한 가맹점의 업종별 통합 적립금에서 사용")
     @PostMapping("/point/using")
     public ResponseEntity<CommonResponse<PointResponse>> usePoint(@RequestBody @Valid PointRequest pointRequest) throws Exception {
         CommonResponse<PointResponse> commonResponse = new CommonResponse<>(true, "포인트가 성공적으로 사용되었습니다.",memberService.usePoint(pointRequest));
