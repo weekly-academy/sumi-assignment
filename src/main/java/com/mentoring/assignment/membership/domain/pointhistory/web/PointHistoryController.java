@@ -31,7 +31,9 @@ public class PointHistoryController {
     @GetMapping("/history")
     public ResponseEntity<CommonResponse<List<PointResponse>>> getPointHistory(PointHistoryRequest pointHistoryRequest) throws Exception {
 //        log.info(pointHistoryRequest.getBarcodeNumber());
-        return new ResponseEntity<>(pointHistoryService.getPointHistory(pointHistoryRequest), HttpStatus.OK);
+        List<PointResponse> pointResponses = pointHistoryService.getPointHistory(pointHistoryRequest);
+        CommonResponse<List<PointResponse>> commonResponses = new CommonResponse<>(true, "내역 목록이 조회되었습니다.", pointResponses);
+        return new ResponseEntity<>(commonResponses, HttpStatus.OK);
     }
 
 

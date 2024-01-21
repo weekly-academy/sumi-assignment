@@ -1,7 +1,8 @@
 
-## #1. 요구사항 분석 및 설계
 
-<span style="font-size:80%">
+## #1. 요구사항 분석 및 설계 📄
+
+<span style="font-size:60%">
 
 > 유저와 바코드 [1:1]
 
@@ -24,8 +25,10 @@
 
 </span>
 
-## #2. Flow Chart
-<span style="font-size:80%">
+---
+
+## #2. Flow Chart ☁️
+<span style="font-size:60%">
 
 > **멤버십 바코드 발급 API**
 
@@ -71,7 +74,7 @@
 
 </span>
 
-## #3. API 명세서
+## #3. API 명세서 ✏️
 
 
 
@@ -81,7 +84,7 @@
 ### 초기 ERD Diagram ✔️
 ![First-ERD-Diagram](https://github.com/weekly-academy/sumi-assignment/assets/81948599/80b7530c-a421-4825-b9e0-abe4e3406afb)
 
-<span style="font-size:80%">
+<span style="font-size:60%">
 
 | 코멘트 내용                                                      | 답변 내용                                              |
 |-------------------------------------------------------------|----------------------------------------------------|
@@ -130,7 +133,11 @@
 ### 최종 ERD Diagram ✔️
 ![final-Erd Diagram](https://github.com/weekly-academy/sumi-assignment/assets/81948599/794e811e-3cef-472c-a0f3-2ba6f08b8755)
 
-<span style="font-size:80%">
+<span style="font-size:60%">
+
+
+<br>
+
 
 | 코멘트 내용                                                     | 답변 내용                                              |
 |------------------------------------------------------------|----------------------------------------------------|
@@ -170,7 +177,7 @@
 
 
 - 현업에서는 회사마다 다르게 사용 but, 학생일 때 해보는 것이 좋다.
-- [Spring - REST API에서 직접 정의한 Error code를 사용하는 이유!](*https://jaehoney.tistory.com/240*)`
+- [Spring - REST API에서 직접 정의한 Error code를 사용하는 이유!](https://jaehoney.tistory.com/240)
 - 나같은 경우, Error Code를 다음과 같이 작성했다.
   - `@Valid` Error가 났을 경우의 예시이다.
 ```
@@ -188,42 +195,46 @@
 </span>
 
 
+---
 ## #5. Code Comment 📜
 
 > **코드**를 작성하면서 코멘트 받은 내용을 바탕으로 정리하였습니다.
 
-<span style="font-size:80%">
+<span style="font-size:60%">
 
 
 | 코멘트 내용                                                                                         | 답변 내용                       |
 |------------------------------------------------------------------------------------------------|-----------------------------|
-| 0x00. Member와 MemberPoint가 Cascade로 처리되어야 한다고 생각하는 이유                                          | [0x00 : Comment Need]()     |
-| 0x01. Assert가 어느 시점에 사용되는지, 사용한 이유                                                             | [0x01 : Comment Need]()     |
-| 0x02. 테이블명/컬럼명 컨벤션                                                                             | [0x02 : Comment Resolved]() |
-| 0x03. 서비스에서 사용자에게 응답될 Http Response 객체를 직접 만드는게 맞을까?                                           | [0x03 : Comment Resolved]() |
-| 0x04. Entity 클래스에서 builder를 사용한 이유                                                             | [0x04 : Comment Need]()     |
-| 0x05. Service와 ServiceImpl가 같은 패키지에 있으면?                                                       | [0x05 : Comment Need]()     |
-| 0x06. PartnerStoreCategory에서 컬럼 field 타입을 char보다 enum을 쓰자                                      | [0x06 : Comment Resolved]() |
-| 0x07. @RequiredArgsConstructor, @NoArgsConstructor등 습관적으로 어노테이션을 쓰지말고, 왜 필요한지 생각해보자            | [0x07 : Comment Resolved]() | 
-| 0x08. LocalDateTime말고 Instant, OffsetDateTime, ZonedDateTime을 사용해보자                            | [0x08 : Comment Need]()     |                                                                               
-| 0x09. 메소드 명이나 변수명에 ~List같이 자료형을 포함시키지 말자                                                       | [0x09 : Comment Resolved]() |
-| 0x10. 작성한 코드에서 PartnerStore와 PointHistory의 관계를 봤을 때, 상호명이 변경될 경우 PointHistory도 영향을 받을 수 있지않을까? | [0x10 : Comment Need]()     |                                                                       
-| 0x11. 메소드 파라미터와 반환 값으로 Primitive Type이 아니라 Wrapper Type을 사용한 이유                                | [0x11 : Comment Resolved]() |                                                                            
-| 0x12. build.gradle.kts로 변경해보자                                                                  | [0x12 : Comment Need]()     |
-| 0x13. build.gradle의 버전을 외부에 지정하는 방법을 적용해보자                                                     | [0x13 : Comment Need]()     |
+| 0x05. Member와 MemberPoint가 Cascade로 처리되어야 한다고 생각하는 이유                                          | [0x00 : Comment Need]()     |
+| 0x06. Assert가 어느 시점에 사용되는지, 사용한 이유                                                             | [0x01 : Comment Need]()     |
+| 0x07. 테이블명/컬럼명 컨벤션                                                                             | [0x02 : Comment Resolved]() |
+| 0x08. 서비스에서 사용자에게 응답될 Http Response 객체를 직접 만드는게 맞을까?                                           | [0x03 : Comment Resolved]() |
+| 0x09. Entity 클래스에서 builder를 사용한 이유                                                             | [0x04 : Comment Need]()     |
+| 0x10. Service와 ServiceImpl가 같은 패키지에 있으면?                                                       | [0x05 : Comment Need]()     |
+| 0x11. PartnerStoreCategory에서 컬럼 field 타입을 char보다 enum을 쓰자                                      | [0x06 : Comment Resolved]() |
+| 0x12. @RequiredArgsConstructor, @NoArgsConstructor등 습관적으로 어노테이션을 쓰지말고, 왜 필요한지 생각해보자            | [0x07 : Comment Resolved]() | 
+| 0x13. LocalDateTime말고 Instant, OffsetDateTime, ZonedDateTime을 사용해보자                            | [0x08 : Comment Need]()     |                                                                               
+| 0x14. 메소드 명이나 변수명에 ~List같이 자료형을 포함시키지 말자                                                       | [0x09 : Comment Resolved]() |
+| 0x15. 작성한 코드에서 PartnerStore와 PointHistory의 관계를 봤을 때, 상호명이 변경될 경우 PointHistory도 영향을 받을 수 있지않을까? | [0x10 : Comment Need]()     |                                                                       
+| 0x16. 메소드 파라미터와 반환 값으로 Primitive Type이 아니라 Wrapper Type을 사용한 이유                                | [0x11 : Comment Resolved]() |                                                                            
+| 0x17. build.gradle.kts로 변경해보자                                                                  | [0x12 : Comment Need]()     |
+| 0x18. build.gradle의 버전을 외부에 지정하는 방법을 적용해보자                                                     | [0x13 : Comment Need]()     |
 </span>
 
+---
 
 ## #6. Learning ✨
 
 > 간단한 과제이지만, 굉장히 배운 내용이 많습니다. 이에 관해 정리한 내용입니다. 
 
 
+---
+
 ## #7. Questions ❓
 
 > 기술적인 부분이나 개발 태도에 대해서 질문한 부분입니다. 
 
-<span style="font-size:80%">
+<span style="font-size:60%">
 
 ### 1. 
 ```일단 코드를 대충이라도 짜서 돌아가게 만든 다음 리팩토링하면서 정리하기 vs 코드를 짜면서 시간이 걸리더라도 모르는 내용이 있으면 다 찾아보고 정리 후에 다시 코드짜기```

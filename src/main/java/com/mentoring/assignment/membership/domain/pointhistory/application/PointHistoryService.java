@@ -35,7 +35,7 @@ public class PointHistoryService{
     private final BarcodeService barcodeService;
 
 
-    public CommonResponse<List<PointResponse>> getPointHistory(PointHistoryRequest pointHistoryRequest) throws Exception {
+    public List<PointResponse> getPointHistory(PointHistoryRequest pointHistoryRequest) throws Exception {
         barcodeService.validateBarcode(pointHistoryRequest.getBarcodeNumber());
         List<PointHistory> pointHistoryList = pointHistoryRepository.findPointHistoryInTimeRange(pointHistoryRequest.getStartTime(), pointHistoryRequest.getEndTime());
 //        log.info(pointHistoryList.toString());
@@ -44,7 +44,7 @@ public class PointHistoryService{
             pointResponseList.add(PointResponse.builder().pointHistory(pointHistory).build());
         }
 
-        return new CommonResponse<>(true, "내역 목록이 조회되었습니다.", pointResponseList);
+        return pointResponseList;
     }
 
 
