@@ -289,4 +289,7 @@ memberRepository.save(member);
         return new PointResponse(pointHistory);
 ```
 
+### 4.
+
+`DTO를 어느 계층까지 사용할 것인가?`에 대한 주제로 comment를 정리했는데, 이와 관해서 멘토님의 의견도 궁금합니다!
 </span>

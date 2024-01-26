@@ -1,9 +1,10 @@
-package com.mentoring.assignment.membership.domain.member.application;
+package com.mentoring.assignment.membership.domain.member.application.impl;
 
 
 
 import com.mentoring.assignment.membership.domain.barcode.application.BarcodeService;
 import com.mentoring.assignment.membership.domain.barcode.infrastructure.Barcode;
+import com.mentoring.assignment.membership.domain.member.application.MemberService;
 import com.mentoring.assignment.membership.domain.member.infrastructure.Member;
 import com.mentoring.assignment.membership.domain.member.infrastructure.MemberPoint;
 import com.mentoring.assignment.membership.domain.member.infrastructure.MemberPointRepository;

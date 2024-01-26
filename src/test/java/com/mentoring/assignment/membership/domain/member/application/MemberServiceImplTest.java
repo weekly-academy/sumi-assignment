@@ -2,8 +2,8 @@ package com.mentoring.assignment.membership.domain.member.application;
 
 import com.mentoring.assignment.membership.domain.barcode.application.BarcodeService;
 import com.mentoring.assignment.membership.domain.barcode.infrastructure.Barcode;
+import com.mentoring.assignment.membership.domain.member.application.impl.MemberServiceImpl;
 import com.mentoring.assignment.membership.domain.member.infrastructure.Member;
-import com.mentoring.assignment.membership.domain.member.infrastructure.MemberPoint;
 import com.mentoring.assignment.membership.domain.member.infrastructure.MemberPointRepository;
 import com.mentoring.assignment.membership.domain.member.infrastructure.MemberRepository;
 import com.mentoring.assignment.membership.domain.partnerstore.application.PartnerService;

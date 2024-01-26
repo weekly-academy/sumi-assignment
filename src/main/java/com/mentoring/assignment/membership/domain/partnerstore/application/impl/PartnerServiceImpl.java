@@ -1,6 +1,7 @@
-package com.mentoring.assignment.membership.domain.partnerstore.application;
+package com.mentoring.assignment.membership.domain.partnerstore.application.impl;
 
 
+import com.mentoring.assignment.membership.domain.partnerstore.application.PartnerService;
 import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.*;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class PartnerServiceImpl implements PartnerService{
+public class PartnerServiceImpl implements PartnerService {
 
     private final PartnerCategoryRepository partnerCategoryRepository;
     private final PartnerStoreRepository partnerStoreRepository;
