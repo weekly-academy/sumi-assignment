@@ -1,6 +1,7 @@
 package com.mentoring.assignment.membership.domain.partnerstore.infrastructure;
 
 
+import com.mentoring.assignment.membership.domain.partnercategory.infrastructure.PartnerCategory;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;

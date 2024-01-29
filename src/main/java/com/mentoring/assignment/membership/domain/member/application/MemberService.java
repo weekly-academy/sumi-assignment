@@ -1,16 +1,34 @@
 package com.mentoring.assignment.membership.domain.member.application;
-import com.mentoring.assignment.membership.domain.member.web.dto.PointRequest;
-import com.mentoring.assignment.membership.domain.member.web.dto.PointResponse;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 public interface MemberService {
 
 
-    String[] issueBarcode(Long memberId) throws Exception;
-
-    PointResponse savePoint(PointRequest pointRequest) throws Exception;
-
-    PointResponse usePoint(PointRequest pointRequest) throws Exception;
+    IssuedBarcodeResult issueBarcode(Long memberId) throws Exception;
 
 
+    @ToString
+    @Getter
+    public static class IssuedBarcodeResult {
+
+        private final String barcodeNumber;
+
+
+        public IssuedBarcodeResult(String barcodeNumber) {
+            validate(barcodeNumber);
+            this.barcodeNumber = barcodeNumber;
+        }
+
+        private void validate(String barcodeNumber) {
+            if (barcodeNumber == null) {
+                throw new IllegalArgumentException("barcodeNumber must not be null");
+            }
+        }
+
+    }
 
 }

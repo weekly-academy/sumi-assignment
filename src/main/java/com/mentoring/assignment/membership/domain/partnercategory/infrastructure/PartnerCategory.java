@@ -1,4 +1,4 @@
-package com.mentoring.assignment.membership.domain.partnerstore.infrastructure;
+package com.mentoring.assignment.membership.domain.partnercategory.infrastructure;
 
 
 import jakarta.persistence.*;

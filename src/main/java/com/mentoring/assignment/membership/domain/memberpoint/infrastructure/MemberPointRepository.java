@@ -1,6 +1,7 @@
-package com.mentoring.assignment.membership.domain.member.infrastructure;
+package com.mentoring.assignment.membership.domain.memberpoint.infrastructure;
 
-import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerCategory;
+import com.mentoring.assignment.membership.domain.member.infrastructure.Member;
+import com.mentoring.assignment.membership.domain.partnercategory.infrastructure.PartnerCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -19,7 +19,7 @@ public class Member {
     @Column(columnDefinition = "BIGINT(11)")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "barcode_id")
     private Barcode barcode;
 
@@ -52,7 +52,7 @@ public class Member {
 //    @PostPersist
 
 
-    public void setBarcode(Barcode barcode) {
+    public void assignBarcode(Barcode barcode) {
         this.barcode = barcode;
     }
 }

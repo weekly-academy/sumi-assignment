@@ -22,8 +22,6 @@ public class PointHistoryRequest {
     @NotNull
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime endTime;
-
-
     @NotNull
     private String barcodeNumber;
 

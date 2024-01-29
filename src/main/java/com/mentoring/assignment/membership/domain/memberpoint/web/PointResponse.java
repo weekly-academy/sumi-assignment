@@ -1,8 +1,7 @@
-package com.mentoring.assignment.membership.domain.member.web.dto;
+package com.mentoring.assignment.membership.domain.memberpoint.web;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.Field;
-
+import com.mentoring.assignment.membership.domain.partnercategory.infrastructure.Field;
 import com.mentoring.assignment.membership.domain.pointhistory.infrastructure.PointHistory;
 import com.mentoring.assignment.membership.domain.pointhistory.infrastructure.Type;
 import lombok.AccessLevel;
@@ -23,12 +22,12 @@ public class PointResponse {
     private Integer amount;
 
     @Builder
-    public PointResponse (PointHistory pointHistory){
-        this.approvedAt = pointHistory.getApprovedAt();
-        this.type = pointHistory.getType();
-        this.field = pointHistory.getPartnerCategory().getField();
-        this.partnerName = pointHistory.getPartnerStore().getPartnerName();
-        this.amount = pointHistory.getAmount();
+    public PointResponse(LocalDateTime approvedAt, Type type, Field field, String partnerName, Integer amount){
+        this.approvedAt = approvedAt;
+        this.type = type;
+        this.field = field;
+        this.partnerName = partnerName;
+        this.amount = amount;
     }
 
 }

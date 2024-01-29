@@ -14,14 +14,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
 class BarcodeServiceTest {
 
     @InjectMocks
-    private BarcodeService barcodeService;
+    private BarcodeReader barcodeService;
 
     @Mock
     private BarcodeRepository barcodeRepository;

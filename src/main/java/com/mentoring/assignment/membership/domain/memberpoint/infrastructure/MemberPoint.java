@@ -1,7 +1,8 @@
-package com.mentoring.assignment.membership.domain.member.infrastructure;
+package com.mentoring.assignment.membership.domain.memberpoint.infrastructure;
 
 
-import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerCategory;
+import com.mentoring.assignment.membership.domain.member.infrastructure.Member;
+import com.mentoring.assignment.membership.domain.partnercategory.infrastructure.PartnerCategory;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
@@ -14,6 +15,7 @@ import org.springframework.util.Assert;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
+@ToString
 @Table(name = "member_point")
 public class MemberPoint {
     @Id

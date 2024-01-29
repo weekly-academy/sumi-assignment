@@ -1,4 +1,4 @@
-package com.mentoring.assignment.membership.domain.member.web.dto;
+package com.mentoring.assignment.membership.domain.member.web;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -6,14 +6,15 @@ import lombok.*;
 
 @Getter
 @NoArgsConstructor // test에서 json parsing 할 때 생성자 필요
-public class MemberDto {
+public class MemberRequest {
     @NotNull
     private Long userId;
 
 
     @Builder
-    public MemberDto(Long userId) {
+    public MemberRequest(Long userId) {
         this.userId = userId;
     }
+
 
 }

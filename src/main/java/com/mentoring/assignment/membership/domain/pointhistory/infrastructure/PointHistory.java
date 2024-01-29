@@ -2,13 +2,10 @@ package com.mentoring.assignment.membership.domain.pointhistory.infrastructure;
 
 import com.mentoring.assignment.membership.domain.barcode.infrastructure.Barcode;
 
-import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerCategory;
+import com.mentoring.assignment.membership.domain.partnercategory.infrastructure.PartnerCategory;
 import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerStore;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -18,6 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "point_history")
+@ToString
 public class PointHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

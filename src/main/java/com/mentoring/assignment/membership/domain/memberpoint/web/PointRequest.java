@@ -1,9 +1,7 @@
-package com.mentoring.assignment.membership.domain.member.web.dto;
+package com.mentoring.assignment.membership.domain.memberpoint.web;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 // Wrapper Class vs primitive Type
@@ -12,7 +10,7 @@ import lombok.NoArgsConstructor;
 // Primitive Type 으로 선언할 시 @NotNull 동작X
 @Getter
 // [Error] Cannot construct instance of 'test.model.CreateUser' (no Creators, like default construct, exist) means you need no-args constructor.
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PointRequest {
     @NotNull
     private Long partnerId;

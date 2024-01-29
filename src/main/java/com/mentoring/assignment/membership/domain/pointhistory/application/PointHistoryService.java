@@ -1,24 +1,18 @@
 package com.mentoring.assignment.membership.domain.pointhistory.application;
 
 
-import com.mentoring.assignment.membership.domain.barcode.application.BarcodeService;
-import com.mentoring.assignment.membership.domain.barcode.infrastructure.Barcode;
-import com.mentoring.assignment.membership.domain.member.web.dto.PointResponse;
-import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerCategory;
-import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerStore;
+import com.mentoring.assignment.membership.domain.barcode.application.BarcodeReader;
+import com.mentoring.assignment.membership.domain.partnercategory.infrastructure.Field;
 import com.mentoring.assignment.membership.domain.pointhistory.infrastructure.PointHistory;
-import com.mentoring.assignment.membership.domain.pointhistory.infrastructure.PointHistoryRepository;
 import com.mentoring.assignment.membership.domain.pointhistory.infrastructure.Type;
-import com.mentoring.assignment.membership.domain.pointhistory.web.PointHistoryRequest;
 
-import com.mentoring.assignment.membership.global.dto.CommonResponse;
-import lombok.RequiredArgsConstructor;
+
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,39 +24,63 @@ import java.util.List;
 // 추가나 삭제 또는 수정이 있는 작업에는 쓰기가 가능하도록 별도로 @Transacional 어노테이션을 메소드에 선언하는 것이 좋다
 public class PointHistoryService{
 
-    private final PointHistoryRepository pointHistoryRepository;
+    private final PointHistoryManager pointHistoryManager;
 
-    private final BarcodeService barcodeService;
+    private final BarcodeReader barcodeReader;
 
 
-    public List<PointResponse> getPointHistory(PointHistoryRequest pointHistoryRequest) throws Exception {
-        barcodeService.validateBarcode(pointHistoryRequest.getBarcodeNumber());
-        List<PointHistory> pointHistoryList = pointHistoryRepository.findPointHistoryInTimeRange(pointHistoryRequest.getStartTime(), pointHistoryRequest.getEndTime());
-//        log.info(pointHistoryList.toString());
-        List<PointResponse> pointResponseList = new ArrayList<>();
+
+    public List<PointHistoryResult> getPointHistory(PointHistoryCommand pointHistoryCommand) throws Exception {
+        // 바코드 검증
+        barcodeReader.validateBarcode(pointHistoryCommand.getBarcodeNumber());
+
+        List<PointHistory> pointHistoryList = pointHistoryManager.findPointHistoryInTimeRangeByBarcode(pointHistoryCommand.getStartTime(), pointHistoryCommand.getEndTime(), pointHistoryCommand.getBarcodeNumber());
+
+        List<PointHistoryResult> pointHistoryResults = new ArrayList<>();
         for (PointHistory pointHistory : pointHistoryList) {
-            pointResponseList.add(PointResponse.builder().pointHistory(pointHistory).build());
+            pointHistoryResults.add(PointHistoryResult.builder().pointHistory(pointHistory).build());
         }
 
-        return pointResponseList;
+        return pointHistoryResults;
     }
 
+    // serviceDto와 Controller에서 DTO가 같을때는 그냥 Request, Response를 application layer로 옮기는 게 낫나?
 
-    @Transactional
-    public PointHistory savePointHistory(LocalDateTime approvedAt, Type type, Integer amount, PartnerCategory partnerCategory, PartnerStore partnerStore, Barcode barcode) {
-        PointHistory pointHistory = PointHistory.builder()
-                .approvedAt(approvedAt)
-                .type(type)
-                .amount(amount)
-                .partnerCategory(partnerCategory)
-                .partnerStore(partnerStore)
-                .barcode(barcode)
-                .build();
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class PointHistoryCommand {
+        private LocalDateTime startTime;
+        private LocalDateTime endTime;
+        private String barcodeNumber;
 
-        pointHistoryRepository.save(pointHistory);
-        return pointHistory;
+        @Builder
+        public PointHistoryCommand(LocalDateTime startTime, LocalDateTime endTime, String barcodeNumber){
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.barcodeNumber = barcodeNumber;
+        }
+    }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class PointHistoryResult {
+        private LocalDateTime approvedAt;
+        private Type type;
+        private Field field;
+        private String partnerName;
+        private Integer amount;
+
+        @Builder
+        public PointHistoryResult(PointHistory pointHistory) {
+            this.approvedAt = pointHistory.getApprovedAt();
+            this.type = pointHistory.getType();
+            this.field = pointHistory.getPartnerCategory().getField();
+            this.partnerName = pointHistory.getPartnerStore().getPartnerName();
+            this.amount = pointHistory.getAmount();
+        }
 
 
     }
+
 
 }
