@@ -1,21 +1,21 @@
 ## #1. API 명세서 ✏️
-<img src="data/api-1.png" width="60%" height="50%" />
+<img src="data/api-1.png" width="80%" height="50%" /> 
 
-<img src="data/api-2.png" width="60%" height="50%" />
+<img src="data/api-2.png" width="80%" height="50%" />
 
-<img src="data/api-3.png" width="60%" height="50%" />
+<img src="data/api-3.png" width="80%" height="50%" />
 
-<img src="data/api-4.png" width="60%" height="50%" />
+<img src="data/api-4.png" width="80%" height="50%" />
 
-<img src="data/api-5.png" width="60%" height="50%" />
+<img src="data/api-5.png" width="80%" height="50%" />
 
-<img src="data/api-6.png" width="60%" height="50%" />
+<img src="data/api-6.png" width="80%" height="50%" />
 
-<img src="data/api-7.png" width="60%" height="50%" />
+<img src="data/api-7.png" width="80%" height="50%" />
 
-<img src="data/api-8.png" width="60%" height="50%" />
+<img src="data/api-8.png" width="80%" height="50%" />
 
-## #4. Development Design Comment 💡
+## #2. Development Design Comment 💡
 > **ERD Diagram**과 **API 명세서**을 설계하면서 코멘트받은 내용을 바탕으로 정리하였습니다.
 
 ### 초기 ERD Diagram ✔️
@@ -133,7 +133,7 @@
 
 
 ---
-## #5. Code Comment 📜
+## #3. Code Comment 📜
 
 > **코드**를 작성하면서 코멘트 받은 내용을 바탕으로 정리하였습니다.
 
@@ -161,7 +161,7 @@
 
 ---
 
-## #6. Learning ✨
+## #4. Learning ✨
 
 <span style="font-size:60%">
 
@@ -171,7 +171,7 @@
 
 ---
 
-## #7. Questions ❓
+## #5. Questions ❓
 <span style="font-size:60%">
 
 > 기술적인 부분이나 개발 태도에 대해서 질문한 부분입니다. 
