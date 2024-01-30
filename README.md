@@ -1,82 +1,19 @@
+## #1. API 명세서 ✏️
+<img src="data/api-1.png" width="60%" height="50%" />
 
+<img src="data/api-2.png" width="60%" height="50%" />
 
-## #1. 요구사항 분석 및 설계 📄
+<img src="data/api-3.png" width="60%" height="50%" />
 
-<span style="font-size:60%">
+<img src="data/api-4.png" width="60%" height="50%" />
 
-> 유저와 바코드 [1:1]
+<img src="data/api-5.png" width="60%" height="50%" />
 
-- 사용자당 하나의 바코드를 가지고 있으므로 1:1 관계
-- 바코드로 사용자를 찾을 수 있고, 사용자로 바코드를 찾을 수 있게 하기 위해 양방향으로 설계
-    
-> 가맹점과 업종 [N:1]
-- 하나의 가맹점은 하나의 업종을 가진다
-- 하나의 업종은 여러개의 가맹점을 가진다
-    
-> 업종과 포인트 [1:N]
-- 하나의 업종은 여러개의 포인트 정보를 가진다
-- 하나의 포인트는 하나의 업종을 가진다
+<img src="data/api-6.png" width="60%" height="50%" />
 
-    → 같은 업종의 가맹점들은 적립된 포인트를 공유하여 사용할 수 있기 때문에 업종과 포인트 연관관계 매핑! 
+<img src="data/api-7.png" width="60%" height="50%" />
 
-> 바코드와 포인트 [1:N]
-- 하나의 바코드는 여러개(3개)의 포인트를 가진다
-- 하나의 포인트는 하나의 바코드만 가진다
-
-</span>
-
----
-
-## #2. Flow Chart ☁️
-<span style="font-size:60%">
-
-> **멤버십 바코드 발급 API**
-
-- 사용자 정보 조회 → `사용자 ID (9자리 숫자)` 
-- 바코드 생성: 중복 X, 10자리 숫자형 문자열
-
-    → 사용자의 바코드가 있는 경우 기존 바코드를 반환
-
-    → 사용자의 바코드가 없는 경우 바코드 테이블에 저장 
-    
-
-> **포인트 적립 API**
-
-- 사용자 정보 조회 → `사용자 바코드` → 사용자의 바코드가 존재하지않으면 등록되지 않은 바코드 에러
-  
-- `적립금액` 입력
-  
-- `가맹점 ID` 입력 → 가맹점이 존재하지 않으면 등록되지 않은 가맹점 에러
-  
-- 가맹점 ID로 가맹점의 업종 찾기
-  
-- 히스토리 테이블에 모두 저장하기
-
-> **포인트 사용 API**
-
-- 사용자 정보 조회 → `사용자 바코드` → 사용자의 바코드가 존재하지않으면 등록되지 않은 바코드 에러
-  
-- `사용금액` 입력
-  
-- `가맹점 ID` 입력 → 가맹점이 존재하지 않으면 등록되지 않은 가맹점 에러
-  
-- 가맹점 ID로 가맹점의 업종 찾기
-  
-- 사용자 - 포인트 테이블의 업종별 최종 포인트에서 사용금액만큼 빼기 → 최종 포인트보다 사용금액이 많을 경우 포인트 부족 에러
-  
-- 히스토리 테이블에 모두 저장
-  
-
-> **내역 조회 API**
-
-- 사용자 정보 조회 → `사용자 바코드` → 사용자의 바코드가 존재하지않으면 등록되지 않은 바코드 에러
-- 시작긴간과 종료기간을 입력하면, 그 기간에 맞는 포인트 내역 처리
-
-</span>
-
-## #3. API 명세서 ✏️
-
-
+<img src="data/api-8.png" width="60%" height="50%" />
 
 ## #4. Development Design Comment 💡
 > **ERD Diagram**과 **API 명세서**을 설계하면서 코멘트받은 내용을 바탕으로 정리하였습니다.
@@ -203,38 +140,42 @@
 <span style="font-size:60%">
 
 
-| 코멘트 내용                                                                                         | 답변 내용                       |
-|------------------------------------------------------------------------------------------------|-----------------------------|
-| 0x05. Member와 MemberPoint가 Cascade로 처리되어야 한다고 생각하는 이유                                          | [0x00 : Comment Need]()     |
-| 0x06. Assert가 어느 시점에 사용되는지, 사용한 이유                                                             | [0x01 : Comment Need]()     |
-| 0x07. 테이블명/컬럼명 컨벤션                                                                             | [0x02 : Comment Resolved]() |
-| 0x08. 서비스에서 사용자에게 응답될 Http Response 객체를 직접 만드는게 맞을까?                                           | [0x03 : Comment Resolved]() |
-| 0x09. Entity 클래스에서 builder를 사용한 이유                                                             | [0x04 : Comment Need]()     |
-| 0x10. Service와 ServiceImpl가 같은 패키지에 있으면?                                                       | [0x05 : Comment Need]()     |
-| 0x11. PartnerStoreCategory에서 컬럼 field 타입을 char보다 enum을 쓰자                                      | [0x06 : Comment Resolved]() |
-| 0x12. @RequiredArgsConstructor, @NoArgsConstructor등 습관적으로 어노테이션을 쓰지말고, 왜 필요한지 생각해보자            | [0x07 : Comment Resolved]() | 
-| 0x13. LocalDateTime말고 Instant, OffsetDateTime, ZonedDateTime을 사용해보자                            | [0x08 : Comment Need]()     |                                                                               
-| 0x14. 메소드 명이나 변수명에 ~List같이 자료형을 포함시키지 말자                                                       | [0x09 : Comment Resolved]() |
-| 0x15. 작성한 코드에서 PartnerStore와 PointHistory의 관계를 봤을 때, 상호명이 변경될 경우 PointHistory도 영향을 받을 수 있지않을까? | [0x10 : Comment Need]()     |                                                                       
-| 0x16. 메소드 파라미터와 반환 값으로 Primitive Type이 아니라 Wrapper Type을 사용한 이유                                | [0x11 : Comment Resolved]() |                                                                            
-| 0x17. build.gradle.kts로 변경해보자                                                                  | [0x12 : Comment Need]()     |
-| 0x18. build.gradle의 버전을 외부에 지정하는 방법을 적용해보자                                                     | [0x13 : Comment Need]()     |
+| 코멘트 내용                                                                                         | 답변 내용                                       |
+|------------------------------------------------------------------------------------------------|---------------------------------------------|
+| 0x05. Member와 MemberPoint가 Cascade로 처리되어야 한다고 생각하는 이유                                          | [0x05 : Comment Need](comments/0x05.md)     |
+| 0x06. Assert가 어느 시점에 사용되는지, 사용한 이유                                                             | [0x06 : Comment Need](comments/0x06.md)     |
+| 0x07. 테이블명/컬럼명 컨벤션                                                                             | [0x07 : Comment Resolved](comments/0x07.md) |
+| 0x08. 서비스에서 사용자에게 응답될 Http Response 객체를 직접 만드는게 맞을까?                                           | [0x08 : Comment Resolved](comments/0x08.md) |
+| 0x09. Entity 클래스에서 builder를 사용한 이유                                                             | [0x09 : Comment Need](comments/0x09.md)     |
+| 0x10. Service와 ServiceImpl가 같은 패키지에 있으면?                                                       | [0x10 : Comment Need](comments/0x10.md)     |
+| 0x11. PartnerStoreCategory에서 컬럼 field 타입을 char보다 enum을 쓰자                                      | [0x11 : Comment Resolved](comments/0x11.md) |
+| 0x12. @RequiredArgsConstructor, @NoArgsConstructor등 습관적으로 어노테이션을 쓰지말고, 왜 필요한지 생각해보자            | [0x12 : Comment Resolved](comments/0x12.md) | 
+| 0x13. LocalDateTime말고 Instant, OffsetDateTime, ZonedDateTime을 사용해보자                            | [0x13 : Comment Need](comments/0x13.md)     |                                                                               
+| 0x14. 메소드 명이나 변수명에 ~List같이 자료형을 포함시키지 말자                                                       | [0x14 : Comment Resolved](comments/0x14.md) |
+| 0x15. 작성한 코드에서 PartnerStore와 PointHistory의 관계를 봤을 때, 상호명이 변경될 경우 PointHistory도 영향을 받을 수 있지않을까? | [0x15 : Comment Need](comments/0x15.md)     |                                                                       
+| 0x16. 메소드 파라미터와 반환 값으로 Primitive Type이 아니라 Wrapper Type을 사용한 이유                                | [0x16 : Comment Resolved](comments/0x16.md) |                                                                            
+| 0x17. build.gradle.kts로 변경해보자                                                                  | [0x17 : Comment Need](comments/0x17.md)     |
+| 0x18. build.gradle의 버전을 외부에 지정하는 방법을 적용해보자                                                     | [0x18 : Comment Need](comments/0x18.md)     |
+
 </span>
 
 ---
 
 ## #6. Learning ✨
 
+<span style="font-size:60%">
+
 > 간단한 과제이지만, 굉장히 배운 내용이 많습니다. 이에 관해 정리한 내용입니다. 
 
+</span>
 
 ---
 
 ## #7. Questions ❓
+<span style="font-size:60%">
 
 > 기술적인 부분이나 개발 태도에 대해서 질문한 부분입니다. 
 
-<span style="font-size:60%">
 
 ### 1. 
 ```일단 코드를 대충이라도 짜서 돌아가게 만든 다음 리팩토링하면서 정리하기 vs 코드를 짜면서 시간이 걸리더라도 모르는 내용이 있으면 다 찾아보고 정리 후에 다시 코드짜기```
@@ -292,4 +233,5 @@ memberRepository.save(member);
 ### 4.
 
 `DTO를 어느 계층까지 사용할 것인가?`에 대한 주제로 comment를 정리했는데, 이와 관해서 멘토님의 의견도 궁금합니다!
+
 </span>
