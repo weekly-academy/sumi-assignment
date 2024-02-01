@@ -1,7 +1,6 @@
 package com.mentoring.assignment.membership.domain.member.application.impl;
 
 
-import com.mentoring.assignment.membership.domain.barcode.application.BarcodeReader;
 import com.mentoring.assignment.membership.domain.barcode.infrastructure.Barcode;
 import com.mentoring.assignment.membership.domain.member.application.MemberReader;
 import com.mentoring.assignment.membership.domain.member.application.MemberService;
@@ -11,7 +10,6 @@ import com.mentoring.assignment.membership.domain.partnercategory.application.Pa
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +25,6 @@ public class MemberServiceImpl implements MemberService {
     private final MemberReader memberReader;
     private final PartnerCategoryReader partnerCategoryReader;
     private final MemberPointManager memberPointManager;
-    private final BarcodeReader barcodeReader;
 
     // 멤버쉽 바코드 발급
     @Override
@@ -48,11 +45,10 @@ public class MemberServiceImpl implements MemberService {
                 .build();
 
         barcode.create();
-        barcodeReader.save(barcode);
+//        barcodeReader.save(barcode);
         log.info(barcode.getBarcodeNumber());
-        // ? @transacational 있으니까 barcode save 안해도 되지 않나? -> transient 에러뜸
-        // https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/
-        // -> cascade 설정해줌
+        // @transacational 있으니까 barcode save 안해도 되지 않나? -> transient 에러뜸
+      // -> cascade 설정해줌 -> 안해도됨
 
         member.assignBarcode(barcode);
 //        memberRepository.save(member); -> @transactional 있으니까 안해도 되지않나? -> 안해도됨

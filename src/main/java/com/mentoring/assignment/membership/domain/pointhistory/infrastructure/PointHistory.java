@@ -23,7 +23,7 @@ public class PointHistory {
     private Long id;
 
 
-    @Column(name = "approved_at", columnDefinition = "TIMESTAMP", nullable = false)
+    @Column(name = "approved_at", columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime approvedAt;
 

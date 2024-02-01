@@ -48,7 +48,7 @@ public class MemberPointManager {
 
     @Transactional
     public void initMemberPoint(Member member, PartnerCategoryReader partnerCategoryReader) throws Exception {
-        //        Memberpoint 데이터베이스 ID가 1번이 아니면 어떡해? →  field를 이용하자 findByField 이용
+        //  Memberpoint 데이터베이스 ID가 1번이 아니면 어떡해? →  field를 이용하자 findByField 이용
 
         MemberPoint memberPoint1 = MemberPoint
                 .builder()

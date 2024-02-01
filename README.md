@@ -1,27 +1,9 @@
-## #1. API 명세서 ✏️
-<img src="data/api-1.png" width="80%" height="50%" /> 
-
-<img src="data/api-2.png" width="80%" height="50%" />
-
-<img src="data/api-3.png" width="80%" height="50%" />
-
-<img src="data/api-4.png" width="80%" height="50%" />
-
-<img src="data/api-5.png" width="80%" height="50%" />
-
-<img src="data/api-6.png" width="80%" height="50%" />
-
-<img src="data/api-7.png" width="80%" height="50%" />
-
-<img src="data/api-8.png" width="80%" height="50%" />
-
-## #2. Development Design Comment 💡
+## #1. Development Design Comment 💡
 > **ERD Diagram**과 **API 명세서**을 설계하면서 코멘트받은 내용을 바탕으로 정리하였습니다.
 
 ### 초기 ERD Diagram ✔️
 ![First-ERD-Diagram](https://github.com/weekly-academy/sumi-assignment/assets/81948599/80b7530c-a421-4825-b9e0-abe4e3406afb)
 
-<span style="font-size:60%">
 
 | 코멘트 내용                                                      | 답변 내용                                              |
 |-------------------------------------------------------------|----------------------------------------------------|
@@ -65,12 +47,11 @@
 ```
 → **업종별로 포인트를 관리**하도록 해야하므로 나는 포인트 테이블을 따로 만들고, 포인트 테이블에 업종별 최종 포인트 저장하도록 구성했다.
 
-</span>
+
 
 ### 최종 ERD Diagram ✔️
 ![final-Erd Diagram](https://github.com/weekly-academy/sumi-assignment/assets/81948599/794e811e-3cef-472c-a0f3-2ba6f08b8755)
 
-<span style="font-size:60%">
 
 
 <br>
@@ -129,7 +110,24 @@
     ]
 }
 ```
-</span>
+
+
+## #2. 최종 API 명세서 ✏️
+<img src="data/api-1.png" width="80%" height="50%" /> 
+
+<img src="data/api-2.png" width="80%" height="50%" />
+
+<img src="data/api-3.png" width="80%" height="50%" />
+
+<img src="data/api-4.png" width="80%" height="50%" />
+
+<img src="data/api-5.png" width="80%" height="50%" />
+
+<img src="data/api-6.png" width="80%" height="50%" />
+
+<img src="data/api-7.png" width="80%" height="50%" />
+
+<img src="data/api-8.png" width="80%" height="50%" />
 
 
 ---
@@ -137,7 +135,7 @@
 
 > **코드**를 작성하면서 코멘트 받은 내용을 바탕으로 정리하였습니다.
 
-<span style="font-size:60%">
+
 
 
 | 코멘트 내용                                                                                         | 답변 내용                                       |
@@ -146,92 +144,41 @@
 | 0x06. Assert가 어느 시점에 사용되는지, 사용한 이유                                                             | [0x06 : Comment Need](comments/0x06.md)     |
 | 0x07. 테이블명/컬럼명 컨벤션                                                                             | [0x07 : Comment Resolved](comments/0x07.md) |
 | 0x08. 서비스에서 사용자에게 응답될 Http Response 객체를 직접 만드는게 맞을까?                                           | [0x08 : Comment Resolved](comments/0x08.md) |
-| 0x09. Entity 클래스에서 builder를 사용한 이유                                                             | [0x09 : Comment Need](comments/0x09.md)     |
-| 0x10. Service와 ServiceImpl가 같은 패키지에 있으면?                                                       | [0x10 : Comment Need](comments/0x10.md)     |
-| 0x11. PartnerStoreCategory에서 컬럼 field 타입을 char보다 enum을 쓰자                                      | [0x11 : Comment Resolved](comments/0x11.md) |
-| 0x12. @RequiredArgsConstructor, @NoArgsConstructor등 습관적으로 어노테이션을 쓰지말고, 왜 필요한지 생각해보자            | [0x12 : Comment Resolved](comments/0x12.md) | 
-| 0x13. LocalDateTime말고 Instant, OffsetDateTime, ZonedDateTime을 사용해보자                            | [0x13 : Comment Need](comments/0x13.md)     |                                                                               
-| 0x14. 메소드 명이나 변수명에 ~List같이 자료형을 포함시키지 말자                                                       | [0x14 : Comment Resolved](comments/0x14.md) |
-| 0x15. 작성한 코드에서 PartnerStore와 PointHistory의 관계를 봤을 때, 상호명이 변경될 경우 PointHistory도 영향을 받을 수 있지않을까? | [0x15 : Comment Need](comments/0x15.md)     |                                                                       
-| 0x16. 메소드 파라미터와 반환 값으로 Primitive Type이 아니라 Wrapper Type을 사용한 이유                                | [0x16 : Comment Resolved](comments/0x16.md) |                                                                            
-| 0x17. build.gradle.kts로 변경해보자                                                                  | [0x17 : Comment Need](comments/0x17.md)     |
-| 0x18. build.gradle의 버전을 외부에 지정하는 방법을 적용해보자                                                     | [0x18 : Comment Need](comments/0x18.md)     |
+| 0x09. Service와 ServiceImpl가 같은 패키지에 있으면?                                                       | [0x09 : Comment Need](comments/0x09.md)     |
+| 0x10. PartnerStoreCategory에서 컬럼 field 타입을 char보다 enum을 쓰자                                      | [0x10 : Comment Resolved](comments/0x10.md) |
+| 0x11. @RequiredArgsConstructor, @NoArgsConstructor등 습관적으로 어노테이션을 쓰지말고, 왜 필요한지 생각해보자            | [0x11 : Comment Resolved](comments/0x11.md) | 
+| 0x12. LocalDateTime말고 Instant, OffsetDateTime, ZonedDateTime을 사용해보자                            | [0x12 : Comment Need](comments/0x12.md)     |                                                                               
+| 0x13. 메소드 명이나 변수명에 ~List같이 자료형을 포함시키지 말자                                                       | [0x13 : Comment Resolved](comments/0x13.md) |
+| 0x14. 작성한 코드에서 PartnerStore와 PointHistory의 관계를 봤을 때, 상호명이 변경될 경우 PointHistory도 영향을 받을 수 있지않을까? | [0x14 : Comment Need](comments/0x14.md)     |                                                                       
+| 0x15. 메소드 파라미터와 반환 값으로 Primitive Type이 아니라 Wrapper Type을 사용한 이유                                | [0x15 : Comment Resolved](comments/0x15.md) |                                                                            
+| 0x16. 양방향 관계에서 엔티티 저장 방법에 대한 질문 : 연관관계 편의메소드                                                   | [0x16 : Comment Need](comments/0x16.md)     |
+| 0x17. 서비스가 너무 뚱뚱해! Facade Pattern을 이용해보자                                                       | [0x17 : Comment Need](comments/0x17.md)     |
+| 0x18. partnerCategory를 찾을때 partnerfindById(1L)를 이용했는데 데이터베이스에 저장된 id값이 1번 아니라면?                | [0x18 : Comment Need](comments/0x18.md)     |
+| 0x19. return pointHistoryRespostiory.save(pointHistory) 방식을 사용하자                               | [0x19 : Comment Need](comments/0x19.md)     |
+| 0x20. build.gradle.kts로 변경해보자                                                                  | [0x20 : Comment Need](comments/0x20.md)     |
 
-</span>
+
 
 ---
 
 ## #4. Learning ✨
 
-<span style="font-size:60%">
 
 > 간단한 과제이지만, 굉장히 배운 내용이 많습니다. 이에 관해 정리한 내용입니다. 
 
-</span>
+[Git Branch Commit and.. Commit은 언제 해야할까?](https://velog.io/@kirise/GithubTIL-Git-Branch-Commit-and..-Commit%EC%9D%80-%EC%96%B8%EC%A0%9C-%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C)
+
+[JPA Dirty Checking](https://velog.io/@kirise/SpringTIL-JPA-Dirty-Checking)
+
+[@Transactional를 쓰는 이유](https://velog.io/@kirise/Transactional%EB%A5%BC-%EC%93%B0%EB%8A%94-%EC%9D%B4%EC%9C%A0)
+
+[JPA Entity Class에서 @NoArgsConstructor(access = AccessLevel.PROTECTED) 왜 사용할까?](https://velog.io/@kirise/JPA-Entity-Class%EC%97%90%EC%84%9C-NoArgsConstructoraccess-AccessLevel.PROTECTED-%EC%99%9C-%EC%82%AC%EC%9A%A9%ED%95%A0%EA%B9%8C-7xqp8zz8)
+
+
 
 ---
 
 ## #5. Questions ❓
-<span style="font-size:60%">
 
-> 기술적인 부분이나 개발 태도에 대해서 질문한 부분입니다. 
+> 코드랑 comments 폴더에 있는 read.me들 확인해주세요! 최고 :)
 
-
-### 1. 
-```일단 코드를 대충이라도 짜서 돌아가게 만든 다음 리팩토링하면서 정리하기 vs 코드를 짜면서 시간이 걸리더라도 모르는 내용이 있으면 다 찾아보고 정리 후에 다시 코드짜기```
-
-   저는 보통 후자쪽으로 많이 코딩을 하는데, 그래서 시간이 많이 걸리는 것 같습니다. 어떤 방식으로 짜는게 좋을까요?
-
-### 2. 
-제 코드를 보시면, `builder`를 굉장히 많이 사용했습니다. 이렇게 코드를 작성하는 게 좋은 코드인지 잘 모르겠습니다.
-예를 들어, `BarcodeRepositoryTest`를 보시면, 다음과 같이 되어있습니다.
-```    
-Barcode barcode = Barcode.builder()
-.barcodeNumber("123456789")
-.build();
-
-
-Member member = Member.builder()
-        .barcode(barcode)
-        .build();
-
-barcode.assignMember(member);
-
-memberRepository.save(member);
-```
-이렇게 양방향 설정이 되어있는 경우에 `builder`를 이용할 경우, 바코드 먼저 만들고, 멤버 만들고, 다시 바코드에 멤버를 할당하고, 그 멤버를 저장하는 작업을 합니다. 이런식의 코드는 어떻게 생각하시나요?
-
-
-### 3.
-
-이 코드에서는 다른 도메인 패키지에 있는 `repository`를 이용하게되면, 하나의 서비스에 다른 도메인의 `repository`도 섞이게 된다고 생각해서 다른 도메인에 있는 `service`를 이용했는데 이렇게 사용하는 것이 적절한지 궁금합니다.
-
-```
- Barcode barcode = barcodeService.validateBarcode(pointRequest.getBarcodeNumber());
-        Member member = barcode.getMember();
-        //가맹점 검증
-        PartnerStore partnerstore = partnerService.validatePartner(pointRequest.getPartnerId());
-        PartnerCategory partnerCategory = partnerstore.getPartnerCategory();
-
-        // 업종과 멤버로 멤버포인트 찾기
-        MemberPoint memberPoint = memberPointRepository.findByMemberAndPartnerCategory(member, partnerCategory)
-                .orElseThrow(() -> new Exception("회원 포인트를 찾을 수 없습니다."));
-
-        memberPoint.updatePoint(memberPoint.getCurrentPoint() + pointRequest.getAmount());
-
-        // 멤버 포인트 저장
-        memberPointRepository.save(memberPoint);
-
-        // 포인트 히스토리에 저장
-        LocalDateTime localDateTime = LocalDateTime.now();
-        PointHistory pointHistory = pointHistoryService.savePointHistory(localDateTime, Type.EARN, memberPoint.getCurrentPoint(), partnerCategory, partnerstore, barcode);
-
-
-        return new PointResponse(pointHistory);
-```
-
-### 4.
-
-`DTO를 어느 계층까지 사용할 것인가?`에 대한 주제로 comment를 정리했는데, 이와 관해서 멘토님의 의견도 궁금합니다!
-
-</span>

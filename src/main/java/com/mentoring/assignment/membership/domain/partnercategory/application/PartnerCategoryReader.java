@@ -26,10 +26,9 @@ public class PartnerCategoryReader {
 
     // 가맹점 검증
     public PartnerStore validatePartner(Long partnerId) throws Exception {
-        PartnerStore partnerStore = partnerStoreRepository.findById(partnerId)
+       return partnerStoreRepository.findById(partnerId)
                 .orElseThrow(() -> new Exception("등록되지 않은 가맹점입니다."));
 
-        return partnerStore;
     }
 
 }

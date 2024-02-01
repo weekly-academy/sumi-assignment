@@ -39,6 +39,7 @@ public class Barcode {
 
     public void assignMember(Member member) {
         this.member = member;
+        member.assignBarcode(this);
     }
 
 
