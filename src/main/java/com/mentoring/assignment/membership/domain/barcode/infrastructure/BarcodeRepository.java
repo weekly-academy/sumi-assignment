@@ -1,11 +1,10 @@
 package com.mentoring.assignment.membership.domain.barcode.infrastructure;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+
 
 import java.util.Optional;
 
-@Repository
-public interface BarcodeRepository extends JpaRepository<Barcode, Long> { // Entity, type of PK
+public interface BarcodeRepository extends JpaRepository<Barcode, Long> {
     Optional<Barcode> findByBarcodeNumber(String barcode);
 }

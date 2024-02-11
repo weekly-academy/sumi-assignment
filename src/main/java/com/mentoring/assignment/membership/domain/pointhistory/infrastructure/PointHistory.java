@@ -1,20 +1,21 @@
 package com.mentoring.assignment.membership.domain.pointhistory.infrastructure;
 
 import com.mentoring.assignment.membership.domain.barcode.infrastructure.Barcode;
-import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerStore;
-import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerStoreCategory;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import com.mentoring.assignment.membership.domain.partnercategory.infrastructure.PartnerCategory;
+import com.mentoring.assignment.membership.domain.partnerstore.infrastructure.PartnerStore;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
+
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "PointHistory")
+@Table(name = "point_history")
+@ToString
 public class PointHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,8 @@ public class PointHistory {
     private Long id;
 
 
-    @Column(name = "approved_at", columnDefinition = "TIMESTAMP", nullable = false)
+    @Column(name = "approved_at", columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime approvedAt;
 
     @Enumerated(EnumType.STRING)
@@ -31,11 +33,11 @@ public class PointHistory {
 
 
     @Column(nullable = false, columnDefinition = "BIGINT(10)")
-    private int amount;
+    private Integer amount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
-    private PartnerStoreCategory partnerStoreCategory;
+    private PartnerCategory partnerCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "partner_id", nullable = false)
@@ -48,14 +50,13 @@ public class PointHistory {
 
 
     @Builder
-    public PointHistory(LocalDateTime approvedAt, Type type, int amount, PartnerStoreCategory partnerStoreCategory, PartnerStore partnerStore, Barcode barcode) {
+    public PointHistory(LocalDateTime approvedAt, Type type, Integer amount, PartnerCategory partnerCategory, PartnerStore partnerStore, Barcode barcode) {
         this.approvedAt = approvedAt;
         this.type = type;
         this.amount = amount;
-        this.partnerStoreCategory = partnerStoreCategory;
+        this.partnerCategory = partnerCategory;
         this.partnerStore = partnerStore;
         this.barcode = barcode;
     }
-
 
 }
